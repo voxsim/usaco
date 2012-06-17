@@ -55,13 +55,62 @@ and we leve only -(5)->, the second -(3)-> and -(8)-> (the biggest):
 So we have the minimum number: 25.
 */
 
-#include <iostream> 
+#include <iostream>
 #include <fstream>
+#include <queue>
  
 using namespace std;
 
-nt main() {
+int main() {
     ofstream fout ("barn1.out");
     ifstream fin ("barn1.in");
+
+	priority_queue<int, vector<int>, greater<int> > stalls;
+	priority_queue<int, vector<int>, greater<int> > jumps;
+
+	int m, s, c;
+	fin >> m >> s >> c;
+
+	int min = c;
+	int stall;
+	int last;
+
+	for(int i=0; i<c; i++) {
+		fin >> stall;
+		stalls.push(stall);
+	}
+
+	fin >> last;
+	last = stalls.top();
+	stalls.pop();
+
+	while(!stalls.empty()){
+		stall = stalls.top();
+
+		if(stall > last+1) {
+			int jump = stall - last - 1;
+			jumps.push(jump);
+		}
+
+		last = stall;
+		stalls.pop();
+	}
+
+/*	while(!jumps.empty()) {
+		int jump = jumps.top();
+		cout << jump << endl;
+		jumps.pop();
+	}*/
+
+	if(jumps.size() > m-1) {
+		while(jumps.size() > m-1) {
+			int jump = jumps.top();
+			min += jump;
+			jumps.pop();
+		}
+	}
+
+	cout << min << endl;
+	fout << min << endl;
 	return 0;
 }

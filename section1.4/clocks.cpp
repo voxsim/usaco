@@ -1,6 +1,6 @@
 /*
 SECTION: 1.4
-NUMBER: 4
+NUMBER: 3
 ID: voxsim2
 PROG: clocks
 LANG: C++

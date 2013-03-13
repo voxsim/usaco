@@ -1,0 +1,67 @@
+*Prime Cryptarithm*
+
+The following cryptarithm is a multiplication problem that can be solved
+by substituting digits from a specified set of N digits into the
+positions marked with *. If the set of prime digits {2,3,5,7} is
+selected, the cryptarithm is called a PRIME CRYPTARITHM.
+
+      * * *
+   x    * *
+    -------
+      * * *         <-- partial product 1
+    * * *           <-- partial product 2
+    -------
+    * * * *
+
+Digits can appear only in places marked by `*'. Of course, leading
+zeroes are not allowed.
+
+Note that the 'partial products' are as taught in USA schools. The first
+partial product is the product of the final digit of the second number
+and the top number. The second partial product is the product of the
+first digit of the second number and the top number.
+
+Write a program that will find all solutions to the cryptarithm above
+for any subset of digits from the set {1,2,3,4,5,6,7,8,9}.
+
+
+      PROGRAM NAME: crypt1
+
+
+      INPUT FORMAT
+
+Line 1: 	N, the number of digits that will be used
+Line 2: 	N space separated digits with which to solve the cryptarithm
+
+
+      SAMPLE INPUT (file crypt1.in)
+
+5
+2 3 4 6 8
+
+
+      OUTPUT FORMAT
+
+A single line with the total number of unique solutions. Here is the
+single solution for the sample input:
+
+      2 2 2
+    x   2 2
+     ------
+      4 4 4
+    4 4 4
+  ---------
+    4 8 8 4
+
+
+      SAMPLE OUTPUT (file crypt1.out)
+
+1
+
+
+------------------------------------------------------------------------
+*Submission file Name:*
+
+USACO Gateway </usacogate?a=6WzCrwk6FOa>  |   Comment or Question
+<mailto:kolstad@ace.delos.com>
+

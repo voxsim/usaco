@@ -4,6 +4,8 @@ NUMBER: 3
 ID: voxsim2
 PROG: friday
 LANG: C++
+SOLUTION: Loop years from 1900, for each year loop the months and add day[D]++ where D is the day of the 13th of the month.
+COMPLEXITY: O(nyears * months=12) -> O(nyears)
 */
 
 #include <iostream>
@@ -22,9 +24,9 @@ int main() {
 	fin >> nyears;
 
 	int count = 0;
-	for(int i=0; i<nyears; i++) {
+	for(int i=0; i<nyears; i++) { // O(nyears)
 		int year = 1900 + i;
-		for(int j=0; j<nmonths; j++) {
+		for(int j=0; j<nmonths; j++) { //O(months)
 			int month = months[j];
 			if(j == 1 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))) {
 			  month += 1;

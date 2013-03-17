@@ -4,6 +4,7 @@ NUMBER: 1
 ID: voxsim2
 PROG: ride
 LANG: C++
+COMPLEXITY: O(LEN(STR1) + LEN(STR2))
 */
 #include <iostream>
 #include <fstream>

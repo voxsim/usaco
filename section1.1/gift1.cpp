@@ -4,7 +4,11 @@ NUMBER: 2
 ID: voxsim2
 PROG: gift1
 LANG: C++
+SOLUTION: Create a map of <person, money>, initially setted all values to 0 and so on..
+COMPLEXITY = O(NP + NP*number_people) -> O(NP^2)
 */
+
+//TODO: Loop keys of the map C++
 
 #include <iostream>
 #include <fstream>
@@ -28,14 +32,14 @@ int main() {
 
 	fin >> np;
 
-	for(int i=0; i<np; i++) {
+	for(int i=0; i<np; i++) { //O(NP)
 		fin >> fr;
 //		cout << fr << endl;
 		frs[fr] = 0;
 		nps.push_back(fr);
 	}
 
-	for(int i=0; i<np; i++) {
+	for(int i=0; i<np; i++) { //O(NP * number_people)
 		fin >> fr;
 //		cout << fr << endl;
 		fin >> initial_amount >> number_people;

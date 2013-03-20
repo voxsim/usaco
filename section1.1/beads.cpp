@@ -8,6 +8,7 @@ LANG: C++
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <list>
 
 using namespace std;
 
@@ -15,22 +16,25 @@ using namespace std;
 #define RED		1
 #define NOCOLOR	-1
 
+struct cut_point {
+    int blue;
+    int red;
+} cut_point;
+
 int main() {
     ofstream fout ("beads.out");
     ifstream fin ("beads.in");
 	int n;
 	string beads;
-	int first_bead = NOCOLOR;
-	int first_group = -1;
+	list<cut_point> cut_points;
+	int color =	NOCOLOR;
+	int count = 0;
+	int max = 0;
 
 	fin >> n;
 	fin >> beads;
 
-	int color =	NOCOLOR;
-	int count = 0;
-	int old_count = 0;
-	int max = 0;
-	int change = 0;
+
 	for(int i=0; i<n; i++) {
 		if(beads[i] == 'w') {
 			count += 1;	
@@ -44,101 +48,58 @@ int main() {
 		if(beads[i] == 'b' && color == NOCOLOR) {
 			count += 1;
 			color = BLUE;
-			first_bead = BLUE;
         }
 		if(beads[i] == 'r' && color == NOCOLOR) {
 			count += 1;
 			color = RED;
-			first_bead = RED;
         }
+
+        //Here we have a cut point red to blue
 		if(beads[i] == 'b' && color == RED) {
-			if(first_group == -1) {
-				first_group = count;
-			}
-			if(old_count + count > max) {
-				max = old_count + count;
-			}
-			old_count = count;
+            // Get the last and set the red part
+            if(cut_points.size() > 0) {
+                cut_point cp = cut_points.pop_back();
+                cp.red = count;
+                if(cp.red + cp.blue > max) {
+                    max = cp.red + cp.blue;
+                }
+
+                cut_points.push_back(cp);
+            }
+            cut_point cp = new cut_point();
+            cp.red = count;
+            cp.blue = 1;
+            cut_points.push_back(cp);
 			count = 1;
 			color = BLUE;
-			change = 1;	
         }
+
+        //Here we have a cut point blue to red
 		if(beads[i] == 'r' && color == BLUE) {
-			if(first_group == -1) {
-				first_group = count;
-			}
-			if(old_count + count > max) {
-				max = old_count + count;
-			}
-			old_count = count;
+            // Get the last and set the blue part
+            if(cut_points.size() > 0) {
+                cut_point cp = cut_points.pop_back();
+                cp.blue = count;
+                if(cp.red + cp.blue > max) {
+                    max = cp.red + cp.blue;
+                }
+
+                cut_points.push_back(cp);
+            }
+            cut_point cp = new cut_point();
+            cp.blue = count;
+            cp.red = 1;
+            cut_points.push_back(cp);
 			count = 1;
 			color = RED;
-			change = 1;
         }
 	}
-
-	if(old_count + count > max) {
-		max = old_count + count;
-	}
-
-	if(change == 0){
-        max = count;
-    } else {
-		old_count = 0;
-		color = first_bead;
-		count = first_group;
-
-		cout << max << endl;
-		cout << first_group << endl;
-		cout << color << endl;
-		cout << count << endl;
-
-		int stop = 0;
-		for(int i=n; i>first_group; i--) {
-			cout << i << endl;
-			if(beads[i] == 'w') {
-				count += 1;	
-			}
-			if(beads[i] == 'b' && color == BLUE) {
-				count += 1;
-			}
-			if(beads[i] == 'r' && color == RED) {
-				count += 1;
-			}
-			if(beads[i] == 'b' && color == RED) {
-				if(old_count + count > max) {
-					max = old_count + count;
-				}
-				old_count = count;
-				count = 1;
-				color = BLUE;
-				if(stop == 1) {
-					break;
-				}
-				stop = 1;
-			}
-			if(beads[i] == 'r' && color == BLUE) {
-				if(old_count + count > max) {
-					max = old_count + count;
-				}
-				old_count = count;
-				count = 1;
-				color = RED;
-				if(stop == 1) {
-					break;
-				}
-				stop = 1;
-			}
-//			cout << color << " " << count << endl;
-		}
-
-		if(old_count + count > max) {
-			max = old_count + count;
-    	}
-	}
+	
+    list<string>::iterator it;
+	for(it = cut_points.begin(); it != cut_points.end(); it++)
+		fout << (*it).blue << " " << (*it).red << endl;
 
 	cout << max << endl;
-	fout << max << endl;
 
 	return 0;
 }

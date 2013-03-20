@@ -25,10 +25,6 @@ int main() {
 	int max_last_time = 0;
 	int min_first_time = TIME_TOTAL;
 
-//	for(int i=0; i<TIME_TOTAL; i++) {
-//		times[i] = 0;
-//	}
-
 	fin >> n;
 
 	for(int i=0; i<n; i++) {

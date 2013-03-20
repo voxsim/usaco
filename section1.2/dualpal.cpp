@@ -52,11 +52,11 @@ int main() {
 
 	int count = 0;
 	int i = s+1;
-	while(count < n) {
+	while(count < n) { // ???  
 		int ok = 0;
-		for(int b=2; b<11 && ok<2; b++) {
+		for(int b=2; b<11 && ok<2; b++) { //O(base) 
 			string number = to_base(i, b);
-			if(is_palindromic(number)) {
+			if(is_palindromic(number)) { //O(Len(number))
 				ok += 1;
 				if(ok == 2) {
 					cout << i << endl;

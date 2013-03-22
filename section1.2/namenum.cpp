@@ -4,6 +4,7 @@ NUMBER: 3
 ID: voxsim2
 PROG: namenum
 LANG: C++
+COMPLEXITY: O(LEN(FDICT) * LEN(S))
 */
 
 #include <iostream>
@@ -37,13 +38,13 @@ int main() {
 		letters[c] = ((i-1)/3) + 2;
 	}
 
-	while(!fdict.eof()) {
+	while(!fdict.eof()) { // O(LEN(FDICT))
 		string s;
 		fdict >> s;
 		if(!s.empty()) {
 			stringstream ss;
 			int notAdd = 0;
-			for(int i=0; i<=s.size(); i++) {
+			for(int i=0; i<=s.size(); i++) { // O(LEN(S))
 				char c = s[i];
 				if(c == 'Z' || c == 'Q') {
 					notAdd = 1;

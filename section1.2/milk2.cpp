@@ -4,6 +4,7 @@ NUMBER: 1
 ID: voxsim2
 PROG: milk2
 LANG: C++
+COMPLEXITY: O(N + TIME_TOTAL)
 */
 #include <iostream>
 #include <fstream>
@@ -27,7 +28,7 @@ int main() {
 
 	fin >> n;
 
-	for(int i=0; i<n; i++) {
+	for(int i=0; i<n; i++) { // O(N)
 		fin >> first_time >> last_time;
 
 		if(first_time < min_first_time) {
@@ -48,7 +49,7 @@ int main() {
 	int count_0 = 0;
 	int count_1 = 0;
 	int type = MILK;
-	for(int i=min_first_time; i<max_last_time; i++) {
+	for(int i=min_first_time; i<max_last_time; i++) { // O(TIME_TOTAL)
 		if(times[i] == 0 && type == MILK) {
 			type = IDLE;
 			if(time_milking < count_1) {

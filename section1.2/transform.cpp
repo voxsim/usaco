@@ -4,6 +4,7 @@ NUMBER: 2
 ID: voxsim2
 PROG: transform
 LANG: C++
+COMPLEXITY: O(n^2)
 */
 
 /*

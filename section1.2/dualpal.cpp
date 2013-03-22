@@ -4,6 +4,7 @@ NUMBER: 5
 ID: voxsim2
 PROG: dualpal
 LANG: C++
+COMPLEXITY: O(m * 10 * len(number))
 */
 
 #include <iostream>
@@ -52,9 +53,9 @@ int main() {
 
 	int count = 0;
 	int i = s+1;
-	while(count < n) { // ???  
+	while(count < n) { // O(m) where m >= n 
 		int ok = 0;
-		for(int b=2; b<11 && ok<2; b++) { //O(base) 
+		for(int b=2; b<11 && ok<2; b++) { //O(10)
 			string number = to_base(i, b);
 			if(is_palindromic(number)) { //O(Len(number))
 				ok += 1;

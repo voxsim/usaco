@@ -19,10 +19,8 @@ struct Farmer {
 
 class ComparePrice {
 public:
-    bool operator()(Farmer& f1, Farmer& f2)
-    {
-		if(f1.p > f2.p) return true;
-		return false;
+    bool operator()(Farmer& f1, Farmer& f2) {
+		return f1.p > f2.p;
     }
 };
 
@@ -40,12 +38,6 @@ int main() {
 		fin >> p >> a;
 		farmers.push((Farmer) {p, a});
 	}
-
-	/*while (!farmers.empty()) {
-		Farmer f = farmers.top();
-		cout << f.p << " " << f.a << endl;
-		farmers.pop();
-    }*/
 
 	int total = 0;
 	int cost = 0;

@@ -17,19 +17,13 @@ int main() {
     ifstream fin ("ride.in");
     string str1, str2;
     fin >> str1 >> str2;
-//    cout << str1 << endl;
-//    cout << str2 << endl;
     int v1=1, v2=1, a;
     for(a = 0; a!=str1.length(); ++a) {
-//	cout << str1[a] << " " << int(str1[a]) << endl;
-	v1 *= (int(str1[a]) - 64);
+        v1 *= (int(str1[a]) - 64);
     }
     for(a = 0; a!=str2.length(); ++a) {
-//	cout << str2[a] << " " << int(str2[a]) << endl;
-	v2 *= (int(str2[a]) - 64);
+        v2 *= (int(str2[a]) - 64);
     }
-//  cout << v1 << " " << v2 << endl;
-//  fout << a+b << endl;
     if(v1 % 47 == v2 % 47) {
       fout << "GO" << endl;
     } else {

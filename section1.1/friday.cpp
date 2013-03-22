@@ -39,7 +39,6 @@ int main() {
 
 	int space = 0;
 	for(int i=6; i<13; i++) {
-//		cout << "days " << i << ": " << days[i % 7] << endl;
 		if(space == 1) 	{
 			fout << " ";
 		}

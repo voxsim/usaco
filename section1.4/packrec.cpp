@@ -111,17 +111,17 @@ void process(struct rects current) {
     cout << "res: " << result.l[0] << " " << result.l[1] << "\n"; 
     cout << "--------END SECOND CASE------------\n";
 
-    cout << "------------THIRD CASE------------\n";
+    // cout << "------------THIRD CASE------------\n";
     // third case
-    result = second_mode(current, 2);
-    cout << "res: " << result.l[0] << " " << result.l[1] << "\n"; 
-    cout << "--------END THIRD CASE------------\n";
+    // result = second_mode(current, 2);
+    // cout << "res: " << result.l[0] << " " << result.l[1] << "\n"; 
+    // cout << "--------END THIRD CASE------------\n";
 
-    cout << "------------FORTH CASE------------\n";
+    // cout << "------------FORTH CASE------------\n";
     // forth and fifth case
-    result = second_mode(current, 3);
-    cout << "res: " << result.l[0] << " " << result.l[1] << "\n"; 
-    cout << "--------END FORTH CASE------------\n";
+    // result = second_mode(current, 3);
+    // cout << "res: " << result.l[0] << " " << result.l[1] << "\n"; 
+    // cout << "--------END FORTH CASE------------\n";
 }
 
 int main() {

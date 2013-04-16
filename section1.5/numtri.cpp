@@ -1,6 +1,6 @@
 /*
 SECTION: 1.5
-NUMBER: 3
+NUMBER: 1
 ID: voxsim2
 PROG: numtri
 LANG: C++

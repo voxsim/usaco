@@ -1,6 +1,6 @@
 /*
 SECTION: 2.3
-NUMBER: 2
+NUMBER: 3
 ID: voxsim2
 PROG: zerosum
 LANG: C++
